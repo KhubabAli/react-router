@@ -9,14 +9,14 @@ import Root, {loader as rootLoader, action as rootAction} from "./routes/root"
 import './index.css'
 import ErrorPage from "./error-page.jsx";
 import Contact, {loader as contactLoader} from "./routes/contact.jsx";
-import EditContact from "./routes/edit.jsx";
 
+import EditContact, {action as editAction} from "./routes/edit.jsx";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Root />,
+        element: <Root/>,
         errorElement: <ErrorPage/>,
         loader: rootLoader,
         action: rootAction,
@@ -28,14 +28,15 @@ const router = createBrowserRouter([
             }, {
                 path: "contacts/:contactId/edit",
                 element: <EditContact/>,
-                loader: contactLoader
+                loader: contactLoader,
+                action: editAction
             }
         ]
     },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router}/>
-  </React.StrictMode>,
+    <React.StrictMode>
+        <RouterProvider router={router}/>
+    </React.StrictMode>,
 )
