@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
-    createBrowserRouter,
+    createBrowserRouter, createRoutesFromElements, Route,
     RouterProvider
 } from "react-router-dom";
 
@@ -17,6 +17,25 @@ import EditContact, {action as editAction} from "./routes/edit.jsx";
 import {action as destroyAction} from './routes/destroy'
 import Index from "./routes/index.jsx";
 
+
+const router2 = createBrowserRouter(
+    createRoutesFromElements(
+        <Route
+            path="/"
+            element={<Root/>}
+            loader={rootLoader}
+            action={rootAction}
+            errorElement={<ErrorPage/>}
+        >
+            <Route>
+                <Route/>
+                <Route/>
+                <Route/>
+                <Route/>
+            </Route>
+        </Route>
+    )
+)
 
 const router = createBrowserRouter([
     {
